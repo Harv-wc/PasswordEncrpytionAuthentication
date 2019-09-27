@@ -1,8 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Security.Cryptography;
-using System.Text;
-
+// ***** NOT SECURE ***** REMEMBER! MD5 is not something you want to use for encryption! ***** NOT SECURE *****
 namespace PasswordEncrpytionAuthentication
 {
     class Program
@@ -10,21 +7,21 @@ namespace PasswordEncrpytionAuthentication
         static void Main(string[] args)
         {
             MainMenu mainMenu = new MainMenu { };
-            mainMenu.DisplayOptions();
-            var input = Console.ReadLine();
-
+            var userInput = "";
             do
             {
-                while (!Int32.TryParse(input, out _) || (Convert.ToInt32(input) > 3 || Convert.ToInt32(input) < 1))
+                mainMenu.DisplayOptions();
+                userInput = Console.ReadLine();
+                while (!Int32.TryParse(userInput, out _) || (Convert.ToInt32(userInput) > 3 || Convert.ToInt32(userInput) < 1))
                 {
                     Console.Clear();
                     mainMenu.DisplayOptions();
-                    input = Console.ReadLine();
+                    userInput = Console.ReadLine();
                 }
-                mainMenu.HandelOption(Convert.ToInt32(input));
+                mainMenu.HandelOption(Convert.ToInt32(userInput));
 
-            } while (Convert.ToInt32(input) != 3);
-            
+            } while (Convert.ToInt32(userInput) != 3);
+            Console.Clear();
             Console.WriteLine("Bye!");
         }
     }
