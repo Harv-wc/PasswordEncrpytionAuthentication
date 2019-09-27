@@ -19,10 +19,10 @@ namespace PasswordEncrpytionAuthentication
                     userInput = Console.ReadLine();
                 }
                 mainMenu.HandelOption(Convert.ToInt32(userInput));
-
             } while (Convert.ToInt32(userInput) != 3);
             Console.Clear();
             Console.WriteLine("Bye!");
+            MainMenu.TestUsers();
         }
     }
 }

@@ -24,7 +24,13 @@ namespace PasswordEncrpytionAuthentication
                             $"Enter a user name: ");
                         userName = Console.ReadLine();
                         badUserName = false;
-                        if (users.ContainsKey(userName))
+                        if (userName == "" || userName == " " || userName == "  ")
+                        {
+                            badUserName = true;
+                            Console.WriteLine($"You can not leave username empty");
+                            Console.ReadKey();
+                        }
+                        else if (users.ContainsKey(userName))
                         {
                             badUserName = true;
                             Console.WriteLine($"Username already exists");
@@ -106,6 +112,13 @@ namespace PasswordEncrpytionAuthentication
         public static void AddNewUser(string username, string password)
         {
             users.Add(username, password);
+        }
+        public static void TestUsers() // Checking stored usernames and passwords upon exit
+        {
+            foreach (KeyValuePair<string, string> user in users)
+            {
+                Console.WriteLine($"Username: {user.Key} Password: {user.Value}");
+            }
         }
     }
 }
